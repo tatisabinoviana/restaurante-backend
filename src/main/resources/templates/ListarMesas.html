@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" lang="pt">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Lista de Mesas</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+</head>
+<body>
+	<h1>Formação Java!</h1>
+
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Lista de Mesas</h1>
+		</div>
+		<div class="panel-body">
+			
+			<form class="form-inline" method="POST" th:action="@{/mesas}"
+				th:object="${mesa}" style="margin: 20px 0">
+				
+				<div class="form-group">
+					<input type="text" class="form-control" id="nomeMesa"
+						th:field="*{nomeMesa}" placeholder="Mesa" /> 
+
+					<button type="submit" class="btn btn-primary">Adicionar</button>
+				</div>
+			</form>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Mesa</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="mesa: ${mesas}">
+						<td th:text="${mesa.nomeMesa}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
